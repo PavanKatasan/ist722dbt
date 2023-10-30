@@ -6,7 +6,7 @@ stg_orders AS (
         {{ dbt_utils.generate_surrogate_key(['customerid']) }} AS customerkey,
         REPLACE(TO_DATE(orderdate)::VARCHAR, '-', '')::INT AS orderdatekey
     FROM {{source('northwind','Orders')}}
-)
+),
 
 stg_order_details AS (
     SELECT
